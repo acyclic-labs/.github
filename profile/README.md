@@ -1,42 +1,41 @@
 # Acyclic Labs
 
-**Infrastructure for agents that fork.** Coding agents are cheap to run and expensive to trust: they write to your working tree, and the only way to try five approaches is to run five copies of everything. We build the substrate underneath — a filesystem, a stream log, an object store, and elastic machines that all share one property: forking a workspace, a history, or a running machine is a cheap operation, not a copy.
+**Building tools that help developers ship faster.** Acyclic is infrastructure for agent workloads: a harness you compose in Rust, and the filesystem, streams, object storage, machines, and inference underneath it. Build a composable agent harness; add the infrastructure your workload needs. One property runs through all of it — forking a workspace, a history, a machine, or a model context shares what hasn't changed instead of copying it.
 
-> Status, stated once: the [plugin](https://acyclic.dev/docs/plugins) is built and shipping (four of five launches, published to npm, macOS and Linux). Everything else on this page is under active implementation and **not production-qualified** — the docs pages define the intended contract and carry their own preview notices. Performance, availability, and durability claims stay inactive until the qualification evidence is published. We would rather you read that here than discover it in a benchmark.
+> **Status.** These pages define the developer contracts being built, not qualified service guarantees. Every product page on [acyclic.dev/docs](https://acyclic.dev/docs) carries its own preview notice, and performance, availability, durability, limits, and pricing claims stay inactive until their qualification evidence is published. Examples are not release announcements.
 
-## The stack
+## What we're building
 
-| Piece | What it does | Status | Docs |
-|---|---|---|---|
-| **Graphcoder** | Multi-agent coding runtime: web, desktop, and CLI shells over a shared daemon and inference/hypervisor services. The product the stack below exists to serve. | In development, [graphcoder.ai](https://graphcoder.ai) | — |
-| **Plugin** (`acyclic`) | Local agent-native state engine: Merkle snapshot store, turn-linked timeline, copy-on-write forks, safe mode. Delivered as adapters for Claude Code, Codex, Cursor, Claude Desktop, VS Code — anything that runs a shell command or speaks MCP. | Launches 1–4 built, on npm as `@acyclic-labs/plugin`; Launch 5 (monorepo index) is spec | [docs](https://acyclic.dev/docs/plugins) |
-| **Filesystem** | Fork, join, and mount shared agent workspaces through Rust, a native filesystem, or S3. | Preview contract | [docs](https://acyclic.dev/docs/filesystem) |
-| **Stream** | Fork exact ordered histories, append with tail CAS, replay durably without S3 on the hot path. | Preview contract, not production-qualified | [docs](https://acyclic.dev/docs/stream) |
-| **Objects** | Large populations of small artifacts, immutable versions, instant isolated snapshots. | Preview contract, not production-qualified | [docs](https://acyclic.dev/docs/objects) |
-| **Machines** | Elastic Linux machines that expand from idle to peak without picking a CPU/RAM shape, and fork from a checkpoint. | Preview contract | [docs](https://acyclic.dev/docs/machines) |
-| **Inference** | Persistent, branchable agent context with explicit edits, model transfer, work-based billing. | Intended preview contract | [docs](https://acyclic.dev/docs/inference) |
-| **Harness** | Compose models, tools, and agent behavior in Rust; recursive fork-join workflows over local, third-party, or Acyclic providers. | Planned contract | [docs](https://acyclic.dev/docs/harness) |
-| **Managed Agent Runtime** | The same harness, hosted, with explicit capacity, recovery, and organization controls. | Planned contract | [docs](https://acyclic.dev/docs/managed-agent-runtime) |
+| | | Status |
+|---|---|---|
+| [**Open-source harness**](https://acyclic.dev/docs/harness) | Build your agent. Decompose work recursively. Use as much Acyclic infrastructure as you need. | Planned contract |
+| [**Managed Agent Runtime**](https://acyclic.dev/docs/managed-agent-runtime) | Let Acyclic operate your harness and its selected dependencies. | Planned contract |
+| [**Filesystem**](https://acyclic.dev/docs/filesystem) | Shared workspaces that fork instantly, converge safely, and mount anywhere. | Preview contract |
+| [**Stream**](https://acyclic.dev/docs/stream) | One ordered history. Native forks. Durable replay. | Preview contract, not production-qualified |
+| [**Objects**](https://acyclic.dev/docs/objects) | Fast object storage for the many small artifacts agents create. | Preview contract, not production-qualified |
+| [**Machines**](https://acyclic.dev/docs/machines) | Elastic, forkable Linux compute without choosing a VM size. | Preview contract |
+| [**Inference**](https://acyclic.dev/docs/inference) | Persistent, branchable context for fast, economical agent turns. | Intended preview contract |
+| [**Agent integrations**](https://acyclic.dev/docs/plugins) | Use Acyclic capabilities from another agent product, or connect it to the harness. | Planned |
 
-How the pieces depend on each other, and what lands in what order: [the roadmap graph](https://acyclic.dev/docs/roadmap).
+What we're building and how the pieces depend on each other: [the roadmap](https://acyclic.dev/docs/roadmap).
 
-## Repositories
+Our flagship product, [**Graphcoder**](https://graphcoder.ai), is an AI-powered coding assistant designed to integrate seamlessly into your workflow.
 
-Most of the stack is private while it is being qualified. What is public:
+## Public repositories
 
-| Repo | What it is |
+Most of the stack is private while it is being built and qualified. What is public today:
+
+| | |
 |---|---|
-| [`sdk`](https://github.com/acyclic-labs/sdk) | The Acyclic SDK and in-memory reference providers — the contract, runnable without an account. |
-| [`humaniser`](https://github.com/acyclic-labs/humaniser) | "Human or AI" — a guess-the-author game, built as a research instrument. Unrelated to the stack above. |
-| [`s3s`](https://github.com/acyclic-labs/s3s) | Our fork of the `s3s` S3 service adapter; the filesystem's hosted crate builds on it. |
-
-The plugin, filesystem, stream, objects, machines, inference, and harness repos are private today. The plugin is Apache-2.0 and its releases already ship SLSA build provenance, per-binary SBOM attestations, and a `SHA256SUMS` the installer verifies — the binary you install from npm is checkable without the source being open yet.
+| [`sdk`](https://github.com/acyclic-labs/sdk) | The prerelease Rust SDK source and release artifact, with in-memory reference providers. Registry availability, numeric limits, prices, and performance guarantees are not yet published. |
+| [`s3s`](https://github.com/acyclic-labs/s3s) | Our fork of the `s3s` S3 service adapter, which the filesystem's hosted crate builds on. |
+| [`humaniser`](https://github.com/acyclic-labs/humaniser) | "Human or AI" — a guess-the-author game, built as a research instrument. Separate from the stack above. |
 
 ## Who we are
 
-Acyclic Labs, backed by Y Combinator. Two founders:
+Acyclic Labs, funded by Y Combinator. Acyclic builds developer tools that prioritize simplicity and speed.
 
 - Varun Latthe — var@acyclic.dev
 - Abhiram Vinjamuri — ram@acyclic.dev
 
-Running agent swarms and hitting the substrate underneath? [acyclic.dev](https://acyclic.dev) — or mail either of us directly.
+Running agent swarms? [Talk to us](https://acyclic.dev).
