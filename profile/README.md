@@ -1,10 +1,11 @@
 # Acyclic Labs
 
-**Building tools that help developers ship faster.** Infrastructure for agent workloads: a harness you compose in Rust, and the filesystem, streams, object storage, machines, and inference underneath it. Forking a workspace, a history, a machine, or a model context shares what hasn't changed instead of copying it.
+**Rapid agent swarms. Make any agentic workflow exponentially faster.** Underneath the swarms is infrastructure for agent workloads: a harness you compose in Rust, and the filesystem, streams, object storage, machines, and inference underneath it. Forking a workspace, a history, a machine, or a model context shares what hasn't changed instead of copying it.
 
-Two things you can use today:
+Things you can use today:
 
 ```sh
+npm i -g @acyclic-labs/cli      # the acyclic CLI: dispatch a swarm, watch it, pull the result into your repo
 npm i -g @acyclic-labs/plugin   # the acyclic plugin: snapshot, fork and rewind your agent's work
 ```
 
@@ -24,10 +25,8 @@ npm i -g @acyclic-labs/plugin   # the acyclic plugin: snapshot, fork and rewind 
 
 These are contracts being built, not qualified service guarantees — performance, availability, durability, limits, and pricing claims stay inactive until their qualification evidence is published.
 
-Our flagship product, [**Graphcoder**](https://graphcoder.ai), is an AI-powered coding assistant designed to integrate seamlessly into your workflow.
-
 ## Who we are
 
-Acyclic Labs, funded by Y Combinator. We build developer tools that prioritize simplicity and speed — [Varun Latthe](mailto:var@acyclic.dev) and [Abhiram Vinjamuri](mailto:ram@acyclic.dev).
+Acyclic Labs, backed by Y Combinator — [Varun Latthe](mailto:var@acyclic.dev) and [Abhiram Vinjamuri](mailto:ram@acyclic.dev).
 
-Running agent swarms? [Talk to us](https://acyclic.dev).
+Start a swarm at [acyclic.dev](https://acyclic.dev), or [talk to us](mailto:ram@acyclic.dev).
