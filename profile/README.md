@@ -1,14 +1,20 @@
 # Acyclic Labs
 
-**Building tools that help developers ship faster.** Infrastructure for agent workloads: a harness you compose in Rust, and the filesystem, streams, object storage, machines, and inference underneath it. Forking a workspace, a history, a machine, or a model context shares what hasn't changed instead of copying it.
+**Rapid agent swarms. Make any agentic workflow exponentially faster.**
+
+Acyclic Labs builds rapid agent swarms. Hand a task to a swarm and it fans the work out across many agents, each in its own sandbox, then merges what they produce, so long agentic workflows finish exponentially faster.
 
 Two things you can use today:
 
+[**Managed Agents**](https://acyclic.dev/agents): one command hands a task to a swarm of agents working in parallel.
+
 ```sh
-npm i -g @acyclic-labs/plugin   # the acyclic plugin: snapshot, fork and rewind your agent's work
+npm install -g @acyclic-labs/cli
+acyclic swarm login
+acyclic swarm run --task "fix the flaky test in tests/api" --dir . --watch
 ```
 
-[`sdk`](https://github.com/acyclic-labs/sdk) — the prerelease Rust SDK and its in-memory reference providers. Registry availability, limits, and prices aren't published yet.
+[**sdk**](https://github.com/acyclic-labs/sdk): prefer to self-host? The harness is open source and works without managed hosting.
 
 ## What we're building
 
