@@ -24,8 +24,6 @@ npm i -g @acyclic-labs/plugin   # the acyclic plugin: snapshot, fork and rewind 
 
 These are contracts being built, not qualified service guarantees — performance, availability, durability, limits, and pricing claims stay inactive until their qualification evidence is published.
 
-Our flagship product, [**Graphcoder**](https://graphcoder.ai), is an AI-powered coding assistant designed to integrate seamlessly into your workflow.
-
 ## Who we are
 
 Acyclic Labs, funded by Y Combinator. We build developer tools that prioritize simplicity and speed — [Varun Latthe](mailto:var@acyclic.dev) and [Abhiram Vinjamuri](mailto:ram@acyclic.dev).
